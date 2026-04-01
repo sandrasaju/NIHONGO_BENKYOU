@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Verify OTP – JLPT Trainer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/anime-theme.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/particles.css') }}"/>
+</head>
+<body>
+  <div class="particles-container" id="particles"></div>
+  <nav><a class="logo" href="/">🌿 JLPT Trainer</a></nav>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-wrap">
+        {% for cat, msg in messages %}
+          <div class="flash {{ cat }}">{{ msg }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="auth-mascot"></div>
+      <h2 class="auth-title">Check Your Inbox 🌾</h2>
+      <p class="auth-subtitle">OTP sent to <strong style="color:var(--moss);">{{ identifier }}</strong></p>
+
+      {% if dev_otp %}
+      <div class="dev-otp-box">
+        <div class="dev-label">⚠️ Dev Mode — Your OTP</div>
+        <div class="dev-code">{{ dev_otp }}</div>
+        <div class="dev-hint">Configure SMTP in .env to send real emails</div>
+      </div>
+      {% endif %}
+
+      <form method="POST" action="/verify-otp">
+        <div class="otp-inputs" id="otp-inputs">
+          <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off"/>
+          <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off"/>
+          <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off"/>
+          <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off"/>
+          <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off"/>
+          <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off"/>
+        </div>
+        <input type="hidden" name="otp" id="otp-hidden"/>
+        <button type="submit" class="auth-btn" onclick="combineOtp()">Verify & Enter 🌿</button>
+      </form>
+
+      <div class="nature-divider">🌾 · 🌸 · 🌿</div>
+      <div class="auth-link">
+        <a href="/resend-otp">Resend OTP</a> &nbsp;·&nbsp; <a href="/register">← Back</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/anime-mascot.js') }}"></script>
+  <script>
+    
+    const boxes = document.querySelectorAll('#otp-inputs input');
+    boxes[0].focus();
+    boxes.forEach((box, i) => {
+      box.addEventListener('input', () => {
+        box.value = box.value.replace(/\D/g,'');
+        if (box.value && i < boxes.length - 1) boxes[i+1].focus();
+      });
+      box.addEventListener('keydown', e => {
+        if (e.key === 'Backspace' && !box.value && i > 0) boxes[i-1].focus();
+      });
+    });
+    function combineOtp() {
+      document.getElementById('otp-hidden').value = [...boxes].map(b=>b.value).join('');
+    }
+  </script>
+  <script src="{{ url_for('static', filename='js/particles.js') }}"></script>
+  <script src="/static/js/theme.js"></script>
+</body>
+</html>

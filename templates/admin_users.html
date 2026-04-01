@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Users – Admin | JLPT Trainer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/anime-theme.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/particles.css') }}"/>
+</head>
+<body>
+  <div class="particles-container" id="particles"></div>
+
+  <nav>
+    <a class="logo" href="/">🌿 JLPT Trainer</a>
+    <a href="/wordlist">Word List</a>
+    <div class="nav-right">
+      <span class="admin-tag" style="background:rgba(106,171,94,0.12);border:1px solid rgba(106,171,94,0.35);color:var(--bamboo);font-size:0.76rem;font-weight:800;padding:4px 12px;border-radius:99px;">⛩️ Admin</span>
+      <a href="/admin/logout" style="color:var(--sakura);">Logout</a>
+    </div>
+  </nav>
+
+  <div class="container-wide">
+    <div class="users-header">
+      <h2>👥 Registered Users</h2>
+      <span class="users-count">{{ users|length }} users</span>
+    </div>
+
+    <table class="users-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Email / Phone</th>
+          <th>Type</th>
+          <th>Status</th>
+          <th>Points</th>
+          <th>Joined</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for u in users %}
+        <tr>
+          <td style="color:rgba(45,90,39,0.35);">{{ u.id }}</td>
+          <td style="color:#1a2e10;font-weight:700;">{{ u.identifier }}</td>
+          <td style="color:rgba(45,90,39,0.5);text-transform:capitalize;">{{ u.identifier_type }}</td>
+          <td>
+            {% if u.is_verified %}
+              <span class="badge-verified">✓ Verified</span>
+            {% else %}
+              <span class="badge-unverified">⏳ Pending</span>
+            {% endif %}
+          </td>
+          <td><span class="badge-points">⭐ {{ u.reward_points }}</span></td>
+          <td style="color:rgba(45,90,39,0.4);font-size:0.8rem;">{{ u.created_at[:10] }}</td>
+        </tr>
+        {% else %}
+        <tr>
+          <td colspan="6" style="text-align:center;color:rgba(45,90,39,0.4);padding:40px;">No users registered yet 🌿</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <script></script>
+  <script src="{{ url_for('static', filename='js/particles.js') }}"></script>
+  <script src="/static/js/theme.js"></script>
+</body>
+</html>

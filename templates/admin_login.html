@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Login – JLPT Trainer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/anime-theme.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/particles.css') }}"/>
+</head>
+<body>
+  <div class="particles-container" id="particles"></div>
+  <nav><a class="logo" href="/">🌿 JLPT Trainer</a></nav>
+
+  <div class="admin-login-page">
+    <div class="admin-card">
+      <span class="admin-icon">⛩️</span>
+      <h2>Admin Gate</h2>
+      <p class="admin-sub">Restricted — authorised entry only</p>
+
+      {% if error %}
+        <div class="error-msg">⚠️ {{ error }}</div>
+      {% endif %}
+
+      <form method="POST" action="/admin/login">
+        <div class="form-group">
+          <label>Username</label>
+          <div class="input-wrap">
+            <span class="input-icon">👤</span>
+            <input type="text" name="username" placeholder="Enter username" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <div class="input-wrap">
+            <span class="input-icon">🔒</span>
+            <input type="password" name="password" placeholder="Enter password" required/>
+          </div>
+        </div>
+        <button type="submit" class="login-btn">Enter the Gate 🌿</button>
+      </form>
+    </div>
+  </div>
+
+  <script></script>
+  <script src="{{ url_for('static', filename='js/particles.js') }}"></script>
+  <script src="/static/js/theme.js"></script>
+</body>
+</html>

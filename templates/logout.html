@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Goodbye – JLPT Trainer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/anime-theme.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/particles.css') }}"/>
+</head>
+<body>
+  <div class="particles-container" id="particles"></div>
+  <nav><a class="logo" href="/">🌿 JLPT Trainer</a></nav>
+
+  <div class="logout-page">
+    <div class="logout-card">
+      <span class="bye-emoji">🌸</span>
+      <h2>またね！</h2>
+      <p>You've been logged out.<br/>The countryside awaits your return.</p>
+      <div class="btn-group">
+        <a class="btn btn-primary" href="/login">Return to the Path 🌿</a>
+        <a class="btn btn-outline" href="/">Go Home</a>
+      </div>
+    </div>
+  </div>
+
+  <script></script>
+  <script src="{{ url_for('static', filename='js/particles.js') }}"></script>
+  <script src="/static/js/theme.js"></script>
+</body>
+</html>

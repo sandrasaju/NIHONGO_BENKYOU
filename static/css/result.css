@@ -1,0 +1,120 @@
+.result-wrap {
+  position: relative;
+  z-index: 2;
+  padding: 40px 20px;
+}
+
+.result-card {
+  background: rgba(245,240,232,0.93);
+  border: 1px solid rgba(106,171,94,0.35);
+  border-radius: 24px;
+  padding: 48px 40px;
+  text-align: center;
+  max-width: 540px;
+  margin: 0 auto;
+  box-shadow: 0 12px 40px rgba(45,90,39,0.2), 0 1px 0 rgba(255,255,255,0.8) inset;
+  backdrop-filter: blur(12px);
+}
+
+/* Score ring */
+.score-ring-wrap {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 24px;
+}
+
+.score-ring-wrap svg { transform: rotate(-90deg); }
+.score-ring-bg   { fill: none; stroke: rgba(45,90,39,0.1); stroke-width: 8; }
+.score-ring-fill {
+  fill: none;
+  stroke: url(#scoreGrad);
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.4,0,0.2,1);
+}
+
+.score-ring-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-num {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--moss);
+  line-height: 1;
+}
+
+.score-label {
+  color: rgba(45,90,39,0.45);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.result-message {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.7rem;
+  color: var(--moss);
+  margin-bottom: 6px;
+}
+
+.result-sub {
+  color: rgba(45,90,39,0.55);
+  font-weight: 600;
+  margin-bottom: 24px;
+  font-size: 0.92rem;
+}
+
+/* Perfect banner */
+.perfect-banner {
+  background: linear-gradient(135deg, rgba(200,150,12,0.1), rgba(232,160,16,0.08));
+  border: 1.5px solid rgba(200,150,12,0.45);
+  border-radius: 18px;
+  padding: 22px;
+  margin-bottom: 22px;
+  animation: glowPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%,100% { box-shadow: 0 0 12px rgba(200,150,12,0.15); }
+  50%      { box-shadow: 0 0 28px rgba(200,150,12,0.4); }
+}
+
+.perfect-banner .trophy { font-size: 2.8rem; display: block; margin-bottom: 8px; }
+.perfect-banner h3 { font-family: 'Noto Serif JP', serif; color: var(--earth); font-size: 1.2rem; margin-bottom: 6px; }
+.perfect-banner p  { color: rgba(45,90,39,0.55); font-size: 0.86rem; margin-bottom: 12px; }
+
+.points-earned-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold), #e8a020);
+  color: #fff;
+  font-weight: 900;
+  font-size: 0.88rem;
+  padding: 7px 20px;
+  border-radius: 99px;
+  box-shadow: 0 4px 14px rgba(200,150,12,0.35);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.total-points-row {
+  color: rgba(45,90,39,0.5);
+  font-size: 0.86rem;
+  font-weight: 700;
+  margin-bottom: 26px;
+}
+
+.total-points-row span { color: var(--earth); font-weight: 900; }
+
+@media (max-width: 500px) {
+  .result-card { padding: 30px 18px; }
+  .score-ring-wrap { width: 130px; height: 130px; }
+  .score-num { font-size: 1.8rem; }
+}

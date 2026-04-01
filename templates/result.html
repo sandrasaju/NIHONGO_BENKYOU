@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Result – JLPT Trainer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/anime-theme.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/particles.css') }}"/>
+</head>
+<body>
+  <div class="particles-container" id="particles"></div>
+
+  <nav>
+    <a class="logo" href="/">🌿 JLPT Trainer</a>
+    <div class="nav-right">
+      <span class="points-badge">⭐ {{ reward_points }} pts</span>
+      <a href="/logout">Logout</a>
+    </div>
+  </nav>
+
+  <div class="result-wrap">
+    <div class="result-card">
+      {% set pct = (score / total * 100) | int if total > 0 else 0 %}
+      {% set circumference = 408 %}
+
+      <div class="score-ring-wrap">
+        <svg width="160" height="160" viewBox="0 0 160 160">
+          <defs>
+            <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#6aab5e"/>
+              <stop offset="100%" style="stop-color:#2d5a27"/>
+            </linearGradient>
+          </defs>
+          <circle class="score-ring-bg" cx="80" cy="80" r="65"/>
+          <circle class="score-ring-fill" cx="80" cy="80" r="65"
+                  stroke-dasharray="{{ circumference }}"
+                  stroke-dashoffset="{{ circumference }}"
+                  id="ring-fill"/>
+        </svg>
+        <div class="score-ring-text">
+          <span class="score-num">{{ score }}/{{ total }}</span>
+          <span class="score-label">Score</span>
+        </div>
+      </div>
+
+      {% if pct == 100 %}
+        <p class="result-message">Perfect! 🌸</p>
+      {% elif pct >= 70 %}
+        <p class="result-message">Well Done! 🍃</p>
+      {% elif pct >= 50 %}
+        <p class="result-message">Good Effort! 🌿</p>
+      {% else %}
+        <p class="result-message">Keep Walking 🌾</p>
+      {% endif %}
+      <p class="result-sub">You scored {{ pct }}% on {{ level }}</p>
+
+      {% if perfect %}
+      <div class="perfect-banner">
+        <span class="trophy">🏆</span>
+        <h3>Perfect Score!</h3>
+        <p>You mastered all 10 words — the forest bows to you!</p>
+        <span class="points-earned-badge">⭐ +10 Reward Points!</span>
+      </div>
+      {% endif %}
+
+      <p class="total-points-row">Total points: <span>⭐ {{ reward_points }}</span></p>
+
+      <div class="btn-group">
+        <a class="btn btn-primary" href="/quiz?level={{ level }}">Try Again 🌿</a>
+        <a class="btn btn-outline" href="/">Change Level</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const fill = document.getElementById('ring-fill');
+    const pct = {{ pct }};
+    setTimeout(() => {
+      fill.style.strokeDashoffset = 408 - (pct / 100 * 408);
+    }, 300);
+
+    {% if perfect %}
+      
+    {% else %}
+      
+    {% endif %}
+  </script>
+  <script src="{{ url_for('static', filename='js/particles.js') }}"></script>
+  <script src="/static/js/theme.js"></script>
+</body>
+</html>

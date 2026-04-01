@@ -1,0 +1,176 @@
+/* ── CSS Tree System ── */
+/* Trees built entirely with CSS — no SVG, no emoji */
+
+.trees-scene {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70vh;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 0;
+}
+
+/* ── Tree base structure ── */
+.tree {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Trunk */
+.tree-trunk {
+  width: 12px;
+  background: linear-gradient(180deg, #6b3a1a, #4a2510);
+  border-radius: 3px 3px 2px 2px;
+  box-shadow: inset -2px 0 4px rgba(0,0,0,0.3);
+}
+
+/* ── Leaf cluster — the core CSS leaf technique ── */
+.leaf-cluster {
+  position: relative;
+  border-radius: 5% 40% 70% 40%;
+  box-shadow:
+    inset 0px 0px 4px rgba(0,0,0,0.2),
+    inset -3px -3px 6px rgba(0,0,0,0.15),
+    2px 4px 8px rgba(0,0,0,0.12);
+  transform-origin: bottom center;
+}
+
+/* ── Green pine tree ── */
+.tree-pine .tree-trunk { height: 80px; width: 14px; }
+
+.tree-pine .lc-1 {
+  width: 90px; height: 80px;
+  background: linear-gradient(145deg, #4a9030, #2d6a20, #1e4d14);
+  border-radius: 5% 40% 70% 40%;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.25), inset -4px -4px 8px rgba(0,60,0,0.3);
+  transform: skewX(-3deg);
+  margin-bottom: -20px;
+}
+.tree-pine .lc-2 {
+  width: 70px; height: 65px;
+  background: linear-gradient(145deg, #5aaa38, #3a8028, #2a6018);
+  border-radius: 40% 5% 40% 70%;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.2), inset 3px -3px 6px rgba(0,80,0,0.25);
+  transform: skewX(4deg);
+  margin-bottom: -16px;
+}
+.tree-pine .lc-3 {
+  width: 50px; height: 50px;
+  background: linear-gradient(145deg, #6abb44, #4a9030, #306820);
+  border-radius: 5% 50% 5% 50%;
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.18);
+  transform: skewX(-2deg);
+}
+
+/* ── Autumn maple tree ── */
+.tree-maple .tree-trunk { height: 70px; width: 12px; background: linear-gradient(180deg, #7a4020, #5a2e10); }
+
+.tree-maple .lc-1 {
+  width: 100px; height: 85px;
+  background: linear-gradient(135deg, #e85d04, #dc2f02, #9d0208);
+  border-radius: 40% 5% 40% 70%;
+  box-shadow:
+    inset 0 0 8px rgba(100,0,0,0.3),
+    inset -5px -5px 10px rgba(80,0,0,0.25),
+    3px 5px 10px rgba(0,0,0,0.15);
+  transform: skewX(5deg);
+  margin-bottom: -22px;
+  opacity: 0.95;
+}
+.tree-maple .lc-2 {
+  width: 80px; height: 70px;
+  background: linear-gradient(135deg, #f48c06, #e85d04, #c44d00);
+  border-radius: 5% 40% 70% 40%;
+  box-shadow:
+    inset 0 0 6px rgba(120,40,0,0.3),
+    inset 4px -4px 8px rgba(100,20,0,0.2);
+  transform: skewX(-6deg);
+  margin-bottom: -18px;
+}
+.tree-maple .lc-3 {
+  width: 60px; height: 55px;
+  background: linear-gradient(135deg, #faa307, #f48c06, #e06000);
+  border-radius: 40% 70% 5% 40%;
+  box-shadow: inset 0 0 5px rgba(120,60,0,0.25);
+  transform: skewX(3deg);
+}
+
+/* ── Small autumn bush ── */
+.tree-bush .tree-trunk { height: 30px; width: 8px; background: linear-gradient(180deg, #6b3a1a, #4a2510); }
+
+.tree-bush .lc-1 {
+  width: 60px; height: 50px;
+  background: linear-gradient(135deg, #d62828, #a4161a, #7a0010);
+  border-radius: 40% 5% 70% 40%;
+  box-shadow: inset 0 0 5px rgba(80,0,0,0.3), inset -3px -3px 6px rgba(60,0,0,0.25);
+  transform: skewX(-4deg);
+  margin-bottom: -12px;
+}
+.tree-bush .lc-2 {
+  width: 44px; height: 38px;
+  background: linear-gradient(135deg, #e85d04, #c44d00);
+  border-radius: 5% 40% 40% 70%;
+  box-shadow: inset 0 0 4px rgba(100,30,0,0.25);
+  transform: skewX(5deg);
+}
+
+/* ── Gold autumn tree ── */
+.tree-gold .tree-trunk { height: 65px; width: 11px; background: linear-gradient(180deg, #7a4020, #5a2e10); }
+
+.tree-gold .lc-1 {
+  width: 88px; height: 75px;
+  background: linear-gradient(135deg, #ffba08, #faa307, #e07000);
+  border-radius: 5% 40% 70% 40%;
+  box-shadow:
+    inset 0 0 6px rgba(140,80,0,0.3),
+    inset -4px -4px 8px rgba(120,60,0,0.2),
+    2px 4px 8px rgba(0,0,0,0.12);
+  transform: skewX(-5deg);
+  margin-bottom: -20px;
+}
+.tree-gold .lc-2 {
+  width: 68px; height: 60px;
+  background: linear-gradient(135deg, #e9c46a, #f4a261, #e07030);
+  border-radius: 40% 70% 5% 40%;
+  box-shadow: inset 0 0 5px rgba(120,70,0,0.25);
+  transform: skewX(6deg);
+  margin-bottom: -15px;
+}
+.tree-gold .lc-3 {
+  width: 48px; height: 44px;
+  background: linear-gradient(135deg, #ffba08, #e9a020);
+  border-radius: 5% 50% 40% 70%;
+  box-shadow: inset 0 0 4px rgba(140,80,0,0.2);
+  transform: skewX(-3deg);
+}
+
+/* ── Positioning ── */
+.tree-far-left-1  { left: 0;    bottom: 0; }
+.tree-far-left-2  { left: 80px; bottom: 0; }
+.tree-mid-left    { left: 175px; bottom: 0; }
+.tree-near-left   { left: 255px; bottom: 0; }
+
+.tree-far-right-1 { right: 0;    bottom: 0; }
+.tree-far-right-2 { right: 80px; bottom: 0; }
+.tree-mid-right   { right: 175px; bottom: 0; }
+.tree-near-right  { right: 255px; bottom: 0; }
+
+/* ── Dark mode adjustments ── */
+[data-theme="dark"] .trees-scene { opacity: 0.45; filter: brightness(0.6) saturate(0.8); }
+
+/* ── Responsive: hide some trees on small screens ── */
+@media (max-width: 700px) {
+  .tree-mid-left, .tree-near-left,
+  .tree-mid-right, .tree-near-right { display: none; }
+}
+@media (max-width: 480px) {
+  .tree-far-left-2, .tree-far-right-2 { display: none; }
+}

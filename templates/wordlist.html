@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Word List – {{ level }} | JLPT Trainer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/anime-theme.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/wordlist.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/particles.css') }}"/>
+</head>
+<body>
+  <div class="particles-container" id="particles"></div>
+
+  <nav>
+    <a class="logo" href="/">🌿 JLPT Trainer</a>
+    <a href="/admin/users">Users</a>
+    <div class="nav-right">
+      <span class="admin-tag">⛩️ Admin</span>
+      <a href="/admin/logout" style="color:var(--sakura);">Logout</a>
+    </div>
+  </nav>
+
+  <div class="container-wide">
+    <div class="wl-header">
+      <h2>📚 Word List</h2>
+      <span class="admin-tag">⛩️ Admin View</span>
+    </div>
+
+    <div class="level-tabs">
+      <a class="tab {% if level == 'N5' %}active{% endif %}" href="/wordlist?level=N5">🌸 N5</a>
+      <a class="tab {% if level == 'N4' %}active{% endif %}" href="/wordlist?level=N4">🎋 N4</a>
+      <a class="tab {% if level == 'N3' %}active{% endif %}" href="/wordlist?level=N3">🍃 N3</a>
+    </div>
+
+    <table class="vocab-table">
+      <thead>
+        <tr>
+          <th>Word</th>
+          <th>Reading</th>
+          <th>Meaning</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in vocab %}
+        <tr>
+          <td class="kanji-cell">{{ item.word }}</td>
+          <td class="reading-cell">{{ item.reading }}</td>
+          <td class="meaning-cell">{{ item.meaning }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <script></script>
+  <script src="{{ url_for('static', filename='js/particles.js') }}"></script>
+  <script src="/static/js/theme.js"></script>
+</body>
+</html>

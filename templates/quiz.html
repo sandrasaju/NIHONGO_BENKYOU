@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz – {{ level }} | JLPT Trainer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/anime-theme.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/particles.css') }}"/>
+</head>
+<body>
+  <div class="particles-container" id="particles"></div>
+
+  <nav>
+    <a class="logo" href="/">🌿 JLPT Trainer</a>
+    <span style="color:rgba(245,240,232,0.5);font-size:0.82rem;font-weight:700;">{{ level }} Quiz</span>
+    <div class="nav-right">
+      <span class="points-badge">⭐ {{ session.reward_points or 0 }} pts</span>
+      <a href="/">Exit</a>
+    </div>
+  </nav>
+
+  <div class="quiz-wrap">
+    <div class="quiz-card">
+      <div class="progress-wrap">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress" style="width:0%"></div>
+        </div>
+        <span class="counter" id="counter">1/10</span>
+      </div>
+
+      <div class="word-display">
+        <div class="word-kanji" id="word">...</div>
+        <div class="word-reading" id="reading"></div>
+      </div>
+
+      <div class="options" id="options"></div>
+      <div class="feedback" id="feedback"></div>
+      <button id="next-btn" onclick="nextQuestion()">Next 🍃</button>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <script> loadQuestion();</script>
+  <script src="{{ url_for('static', filename='js/particles.js') }}"></script>
+  <script src="/static/js/theme.js"></script>
+</body>
+</html>

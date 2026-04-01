@@ -1,0 +1,235 @@
+/* ── Background trees SVG ── */
+.trees-bg-svg {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 55vh;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.88;
+}
+
+[data-theme="dark"] .trees-bg-svg { opacity: 0.4; filter: brightness(0.5) saturate(0.7); }
+
+/* ── Scene: gate + characters ── */
+.scene-wrap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 2;
+}
+
+.char-girl, .char-man {
+  width: clamp(60px, 12vw, 90px);
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+  animation: charFloat 4s ease-in-out infinite;
+}
+
+.char-man { animation-delay: 0.8s; }
+
+.char-girl svg, .char-man svg { width: 100%; height: auto; }
+
+@keyframes charFloat {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+/* ── Torii gate SVG ── */
+.torii-wrap {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.torii-svg {
+  width: clamp(160px, 38vw, 260px);
+  height: auto;
+  filter: drop-shadow(0 8px 20px rgba(150,30,20,0.3));
+}
+
+/* ── Hero ── */
+.hero {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 28px 20px 40px;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,252,245,0.82);
+  border: 1px solid rgba(106,171,94,0.5);
+  color: var(--moss);
+  font-size: 0.76rem;
+  font-weight: 800;
+  padding: 5px 16px;
+  border-radius: 99px;
+  margin-bottom: 16px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+[data-theme="dark"] .hero-badge {
+  background: rgba(15,30,10,0.75);
+  color: var(--leaf);
+  border-color: rgba(74,124,63,0.5);
+}
+
+.hero h1 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(2rem, 5.5vw, 3.2rem);
+  color: var(--text-main);
+  line-height: 1.2;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 8px rgba(255,255,255,0.4);
+}
+
+[data-theme="dark"] .hero h1 { text-shadow: 0 2px 12px rgba(0,0,0,0.5); }
+
+.hero h1 .jp-text {
+  display: block;
+  font-size: 0.52em;
+  color: var(--bamboo);
+  letter-spacing: 5px;
+  margin-bottom: 4px;
+  opacity: 0.9;
+}
+
+.hero .subtitle {
+  color: var(--text-sub);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 36px;
+}
+
+/* ── Level cards ── */
+.level-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  max-width: 580px;
+  margin: 0 auto 28px;
+}
+
+.level-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 26px 14px;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px var(--card-shadow), 0 1px 0 rgba(255,255,255,0.5) inset;
+}
+
+.level-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--bamboo), var(--leaf));
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.level-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 16px 36px var(--card-shadow);
+  border-color: var(--bamboo);
+}
+
+.level-card:hover::after { transform: scaleX(1); }
+
+.level-card .lc-icon { display: block; margin-bottom: 10px; line-height: 1; }
+.level-card .lc-icon svg { width: 36px; height: 36px; }
+
+.level-card .lc-badge {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--moss);
+  display: block;
+  margin-bottom: 5px;
+}
+
+.level-card .lc-label {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+/* ── Login prompt ── */
+.login-prompt {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 22px;
+  padding: 34px 26px;
+  text-align: center;
+  max-width: 460px;
+  margin: 0 auto;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px var(--card-shadow);
+}
+
+.login-prompt .lp-emoji { font-size: 2.4rem; margin-bottom: 10px; display: block; }
+.login-prompt h3 { font-family: 'Noto Serif JP', serif; font-size: 1.25rem; color: var(--text-main); margin-bottom: 8px; }
+.login-prompt p  { color: var(--text-sub); font-size: 0.88rem; margin-bottom: 20px; font-weight: 600; }
+
+/* ── Stats strip ── */
+.stats-strip {
+  display: flex;
+  justify-content: center;
+  max-width: 460px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px var(--card-shadow);
+}
+
+.stat-item {
+  flex: 1;
+  text-align: center;
+  padding: 16px 10px;
+  border-right: 1px solid var(--card-border);
+}
+
+.stat-item:last-child { border-right: none; }
+
+.stat-item .stat-num {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--moss);
+  display: block;
+}
+
+.stat-item .stat-label {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 600px) {
+  .level-cards { grid-template-columns: 1fr; max-width: 260px; }
+  .torii-svg { width: clamp(130px, 45vw, 200px); }
+  .char-girl, .char-man { width: clamp(48px, 10vw, 70px); }
+  .stats-strip { flex-direction: column; }
+  .stat-item { border-right: none; border-bottom: 1px solid var(--card-border); }
+  .stat-item:last-child { border-bottom: none; }
+}

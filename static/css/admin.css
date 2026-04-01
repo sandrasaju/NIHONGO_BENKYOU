@@ -1,0 +1,184 @@
+.admin-login-page {
+  min-height: calc(100vh - 62px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.admin-card {
+  background: rgba(245,240,232,0.93);
+  border: 1px solid rgba(106,171,94,0.35);
+  border-radius: 24px;
+  padding: 44px 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 16px 48px rgba(45,90,39,0.2);
+  text-align: center;
+  backdrop-filter: blur(12px);
+}
+
+.admin-card .admin-icon { font-size: 2.8rem; margin-bottom: 12px; display: block; }
+
+.admin-card h2 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.7rem;
+  color: var(--moss);
+  margin-bottom: 6px;
+}
+
+.admin-card .admin-sub {
+  color: rgba(45,90,39,0.5);
+  font-size: 0.86rem;
+  font-weight: 600;
+  margin-bottom: 28px;
+}
+
+.form-group { text-align: left; margin-bottom: 18px; }
+
+.form-group label {
+  display: block;
+  color: rgba(45,90,39,0.6);
+  font-size: 0.74rem;
+  font-weight: 900;
+  margin-bottom: 7px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.input-wrap { position: relative; }
+
+.input-wrap .input-icon {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.95rem;
+  pointer-events: none;
+}
+
+.form-group input {
+  width: 100%;
+  background: rgba(255,255,255,0.7);
+  border: 1.5px solid rgba(106,171,94,0.35);
+  border-radius: 12px;
+  padding: 13px 16px 13px 40px;
+  color: #1a2e10;
+  font-size: 0.95rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.form-group input:focus {
+  border-color: var(--bamboo);
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 0 0 4px rgba(74,124,63,0.12);
+}
+
+.error-msg {
+  background: rgba(180,60,60,0.08);
+  border: 1px solid rgba(180,60,60,0.3);
+  color: #8b2020;
+  font-size: 0.86rem;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.login-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--bamboo), var(--moss));
+  color: var(--cream);
+  border: none;
+  border-radius: 50px;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 900;
+  font-family: 'Nunito', sans-serif;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1);
+  box-shadow: 0 4px 16px rgba(45,90,39,0.35);
+}
+
+.login-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(45,90,39,0.45); }
+
+/* Users table */
+.users-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.users-header h2 { font-family: 'Noto Serif JP', serif; font-size: 1.5rem; color: var(--moss); }
+
+.users-count {
+  background: rgba(106,171,94,0.12);
+  border: 1px solid rgba(106,171,94,0.35);
+  color: var(--bamboo);
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 5px 14px;
+  border-radius: 99px;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(245,240,232,0.9);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(106,171,94,0.3);
+  box-shadow: 0 4px 20px rgba(45,90,39,0.1);
+  backdrop-filter: blur(8px);
+}
+
+.users-table th {
+  text-align: left;
+  padding: 13px 16px;
+  color: rgba(45,90,39,0.5);
+  font-size: 0.7rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid rgba(106,171,94,0.2);
+  background: rgba(106,171,94,0.05);
+}
+
+.users-table td {
+  padding: 13px 16px;
+  border-bottom: 1px solid rgba(106,171,94,0.08);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.users-table tr:last-child td { border-bottom: none; }
+.users-table tr:hover td { background: rgba(106,171,94,0.05); }
+
+.badge-verified   { color: var(--bamboo); font-size: 0.8rem; font-weight: 800; }
+.badge-unverified { color: rgba(45,90,39,0.35); font-size: 0.8rem; font-weight: 700; }
+
+.badge-points {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold), #e8a020);
+  color: #fff;
+  font-weight: 900;
+  font-size: 0.76rem;
+  padding: 3px 10px;
+  border-radius: 99px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+
+@media (max-width: 600px) {
+  .admin-card { padding: 30px 20px; }
+  .users-table th, .users-table td { padding: 10px 12px; font-size: 0.8rem; }
+}
