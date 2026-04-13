@@ -106,13 +106,6 @@ jlpt-ai-trainer/
 - Cultural UI design (Japanese theme 🇯🇵)  
 - Authentication + database + admin system  
 
-👉 Perfect for:
-- 🎓 M.Tech AI/ML portfolio  
-- 🇯🇵 Japanese company applications  
-- 💼 Full-stack + AI hybrid roles  
-
----
-
 ## 🔮 Future Enhancements
 
 - 🤖 AI-based personalized quiz recommendations  
@@ -120,15 +113,12 @@ jlpt-ai-trainer/
 - 🎤 Voice-based Japanese learning (speech recognition)  
 - 📱 Mobile app version  
 
----
-
 ## ⭐ Support
 
 If you like this project:  
 👉 Star ⭐ the repository  
 👉 Share with fellow JLPT learners  
 
----
 
 ## 🎌 最後に (Finally…)
 
